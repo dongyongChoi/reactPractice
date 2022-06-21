@@ -2,7 +2,11 @@ const express = require("express");
 const app = express();
 const port = 5550;
 
-const mongodbUrl = "";
+const fs = require("fs");
+
+const jsonFile = fs.readFileSync("./config.json", "utf8");
+const jsonData = JSON.parse(jsonFile);
+const mongodbUrl = jsonData.mongodbUrl;
 
 const mongoose = require("mongoose");
 mongoose
